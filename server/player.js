@@ -15,25 +15,16 @@ module.exports.getPlayers = (socket) =>{
     socket.on("new player", ()=>{
         players[socket.id] = new Player({
             id: socket.id,
-            name: Object.keys(players).length,
+            name: "Player "+Object.keys(players).length,
         })
     });
-    socket.on("movement",data=>{
+    socket.on("position",data=>{
         const player = players[socket.id] || {};
-        if(data.left){
-            player.positionX-=5;
-        }
-        if(data.up){
-            player.positionY-=5;
-        }
-        if(data.right){
-            player.positionX+=5;
-        }
-        if(data.down){
-            player.positionY+=5;
-        }
+        player.positionX = data.positionX
+        player.positionY = data.positionY
     })
     socket.on("disconnect", () =>{
+        console.log("disconected " + socket.id)
         delete players[socket.id]
     })
     return players;

@@ -5,7 +5,7 @@ const drawPlayer = (context, player)=>{
     context.beginPath();
     context.fillStyle = "red"
     context.font = "20px sans-serif";
-    context.fillText('Player ' + player.name, playerX -35,playerY -50)
+    context.fillText(player.name, playerX -35,playerY -50)
     context.closePath();
 
     context.beginPath();

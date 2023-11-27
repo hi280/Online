@@ -26,9 +26,7 @@ let players = null;
 let count = 1;
 io.on("connection", (socket)=>{
     players = getPlayers(socket)
-    setTimeout(() => {
-        console.log(players);
-    }, 100);
+    console.log("conected " + socket.id)
 })
 
 const gameLoop = (players, io) =>{
